@@ -15,7 +15,7 @@ for i, h in numerated:
     if petya > h:
         continue
     else:
-        heights.insert(i, petya)
+        heights.insert(h, petya)
         heights.sort(reverse=True)
         break
 
