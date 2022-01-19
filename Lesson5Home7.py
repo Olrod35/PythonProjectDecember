@@ -3,12 +3,12 @@
 #и выведите количество таких элементов.
 #Крайние элементы списка никогда не учитываются,
 # поскольку у них недостаточно соседей.
+k = 0
+list1 = [456, 752, 25, 38, 4, 8]
 
-tmp = []
-for i, e in enumerate(a):
-    if i == 0 or i == len(a) - 1:
-        continue
-    if e > a[i - 1] and e > a[i + 1]:
-        tmp.append((a[i - 1], e, a[i + 1]))
-
-print(tmp, len(tmp))
+for (index, elem) in enumerate(list1):
+        if index == 0 and index == len(list1):
+            continue
+        if elem > index+1 and elem > index-1:
+            k += 1
+print(k)
