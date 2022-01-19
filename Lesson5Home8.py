@@ -6,15 +6,6 @@
 
 m = [6, 8, 10, 78, 68]
 n = [8, 9, 23, 78, 64]
-"""p = 0
-k = []
-
-for i in m:
-    if i != n[p]:
-        p += 1
-        k.append(i)
-print(k)
-print(len(k))"""
 
 for i in m:
     for p in n:
