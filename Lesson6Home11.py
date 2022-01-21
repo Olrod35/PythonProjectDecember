@@ -5,6 +5,6 @@
 set_1 = {1,2,3,4}
 set_2 = {2,3,4,5}
 if set_1 >= set_2:
-    print("По ДЗ10:"'True')
+    print("По ДЗ11:"'True')
 else:
-    print("По ДЗ10:" 'False')
+    print("По ДЗ11:" 'False')
