@@ -4,17 +4,15 @@
 то вычесть; * — умножить; / — разделить (первое на второе). В остальных случаях вернуть строку "Неизвестная
 операция"."""
 
-def arithmetic(a, b, z):
-    if z == '+':
-        c = a+b
-    elif z == '-':
-        c = a-b
-    elif z == '*':
-        c = a*b
-    elif z == '/':
-        c = a/b
-    else: c = print("Неизвестная операция")
-    return c
+b = dict.fromkeys(["+", "-", "*", "/"])
+print(b)
+def arithmetic(a, m, z):
+      if z in b.keys():
+          print(z)
+          k = a + int(z) + m
+          return k
+      else:
+          print("Неизвестная операция")
 
 z = input("Введите операцию '+','-','*' или '/': ")
-print(arithmetic(5, 6, z))
+print(arithmetic(5,6,z))
