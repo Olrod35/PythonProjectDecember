@@ -8,14 +8,10 @@ checkio(1000) == 1
 checkio(1111) == 1"""
 
 def checkio(k):
-    stroka = str(k)
-    spisok = []
-    for i in stroka:
-        spisok.append(int(i))
     proizv = 1
-    for i in spisok:
+    for i in str(k):
         if i != 0:
-            proizv *= i
+            proizv *= int(i)
     return proizv
 
 k = input("Введите целое число: ")
