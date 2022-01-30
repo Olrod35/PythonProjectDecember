@@ -3,16 +3,27 @@
 произведена над ними. Функция должна вернуть результат вычислений зависящий от третьего аргумент +, сложить их; если —,
 то вычесть; * — умножить; / — разделить (первое на второе). В остальных случаях вернуть строку "Неизвестная
 операция"."""
-
-b = dict.fromkeys(["+", "-", "*", "/"])
+a = input("Введите число: ")
+c = input("Введите число: ")
+b = {"+": a + c, "-": a - c, "*": a * c, "/": a / c}
+#{'+': a + b}.get('+', 'Error')
 print(b)
-def arithmetic(a, m, z):
-      if z in b.keys():
+def arithmetic(a, c):
+      if b.get('+', 'Error'):
+          z = a + c
           print(z)
           k = a + int(z) + m
-          return k
+      if b.get('-', 'Error'):
+          z = a - c
+          print(z)
+      if b.get('*', 'Error'):
+          z = a * c
+          print(z)
+      if b.get('/', 'Error'):
+          z = a / c
+          print(z)
       else:
           print("Неизвестная операция")
 
 z = input("Введите операцию '+','-','*' или '/': ")
-print(arithmetic(5,6,z))
+print(arithmetic(5,6))
