@@ -7,8 +7,10 @@ k = 0
 list1 = [456, 752, 25, 38, 4, 8]
 
 for (index, elem) in enumerate(list1):
-        if index == 0 and index == len(list1):
-            continue
-        if elem > index+1 and elem > index-1:
-            k += 1
+    if index == 0:
+        print(elem)
+    if index == len(list1) - 1:
+        print(elem)
+    if list1[index] > list1(index+1) and list1[index] > list1[index-1]:
+        k += 1
 print(k)
