@@ -15,24 +15,11 @@ USERS = {
 
 import argparse
 
-def ComStrokaParser():
+def stroka_parser():
     parser = argparse.ArgumentParser(add_help=False)#Создали экземпляр
     parser.add_argument("--user", action="store")#Передача User в качестве ком строки
     parser.add_argument("--password", action="store")
     return parser.parse_args()
-
-if __name__ == '__main__':
-    parser = ComStrokaParser()
-    namespace = parser.parse_args()
-    username = namespace.user
-    password = namespace.password
-    print(username)
-    #     # breakpoint()
-    #     answer = params.square ** 2
-    #     if params.verbose:
-    #         print("the square of {} equals {}".format(params.square, answer))
-    #     else:
-    #         print(answer)
 
 def decorator_for_login(func):
     def wrapper(username, password):
@@ -40,7 +27,7 @@ def decorator_for_login(func):
             return False
         if not auth():
             return False
-        return func(username,password)
+        return func(username, password)
     return wrapper
 
 def auth():
@@ -57,15 +44,19 @@ def login(username, password):
     return True
 
 def main():
+    args = stroka_parser()
+    username = args.user
+    password = args.password
+    print(username)
     i = 3
     while i > 0:
-        print("У Вас осталось", i, "попыток")
-        username = input("Введите Ваш логин:")
-        password = input("Введите Ваш пароль:")
+        username = username or input("Введите Ваш логин:")
+        password = password or input("Введите Ваш пароль:")
         if login(username, password):
             break
         print("Неправильное имя или пароль")
         i -= 1
+        print("У Вас осталось", i, "попыток")
         if i == 0:
             print("Попытки истекли")
 
