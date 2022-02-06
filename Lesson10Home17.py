@@ -17,6 +17,9 @@ USERS = {
 }
 
 import argparse
+import datetime
+
+print(datetime.datetime.now())
 
 def stroka_parser():
     parser = argparse.ArgumentParser(add_help=False)#Создали экземпляр
