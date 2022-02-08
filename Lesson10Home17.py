@@ -49,18 +49,32 @@ def login(username, password):
     print("Вы в системе!")
     return True
 
+def func_time():
+    date_fix = datetime.datetime.now()
+    print(date_fix)
+    date_fix_str = date_fix.strftime("%m/%d/%Y/%H/%M/%S")
+    print(date_fix_str)
+    date_fix_obj = datetime.strptime(date_fix_str, "%d/%m/%Y %H:%M:%S")
+    print(date_fix_obj)
+    if datetime.datetime.now() < date_fix_obj + datetime.timedelta(minutes=1):
+         print("время")
+
 def main():
-    args = stroka_parser()
-    username = args.user
-    password = args.password
-    print(username)
     i = 3
+    print("У Вас", i, "попыток")
     while i > 0:
+        args = stroka_parser()
+        username = args.user
+        password = args.password
+        if username is not None:
+            print(username)  # напечатать то, что из командной строки
         username = username or input("Введите Ваш логин:")
         password = password or input("Введите Ваш пароль:")
         if login(username, password):
             break
         print("Неправильное имя или пароль")
+        print("Вы заблокированы! Следующая попытка через 1 мин.")
+        func_time()
         i -= 1
         print("У Вас осталось", i, "попыток")
         if i == 0:

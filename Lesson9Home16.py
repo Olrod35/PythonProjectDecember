@@ -44,12 +44,14 @@ def login(username, password):
     return True
 
 def main():
-    args = stroka_parser()
-    username = args.user
-    password = args.password
-    print(username)
     i = 3
+    print("У Вас", i, "попыток")
     while i > 0:
+        args = stroka_parser()
+        username = args.user
+        password = args.password
+        if username is not None:
+            print(username)  # напечатать то, что из командной строки
         username = username or input("Введите Ваш логин:")
         password = password or input("Введите Ваш пароль:")
         if login(username, password):
