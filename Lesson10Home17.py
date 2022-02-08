@@ -54,10 +54,11 @@ def func_time():
     print(date_fix)
     date_fix_str = date_fix.strftime("%m/%d/%Y/%H/%M/%S")
     print(date_fix_str)
-    date_fix_obj = datetime.strptime(date_fix_str, "%d/%m/%Y %H:%M:%S")
+    date_fix_obj = datetime.datetime.strptime(date_fix_str, "%m/%d/%Y/%H/%M/%S")
     print(date_fix_obj)
     if datetime.datetime.now() < date_fix_obj + datetime.timedelta(minutes=1):
-         print("время")
+        print("время")
+        pass
 
 def main():
     i = 3
