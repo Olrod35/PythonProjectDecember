@@ -42,6 +42,8 @@ def auth():
 def check_password(username, password):
     if USERS.get(username) == password:
         return True
+
+
     #return USERS.get(username) == password
 
 @decorator_for_login
@@ -52,13 +54,13 @@ def login(username, password):
 def func_time():
     date_fix = datetime.datetime.now()
     print(date_fix)
-    date_fix_str = date_fix.strftime("%m/%d/%Y/%H/%M/%S")
+    date_fix_str = date_fix.strftime("%H-%M-%S %Y-%m-%d")
     print(date_fix_str)
-    date_fix_obj = datetime.datetime.strptime(date_fix_str, "%m/%d/%Y/%H/%M/%S")
+    date_fix_obj = datetime.datetime.strptime(date_fix_str, "%H-%M-%S %Y-%m-%d")
     print(date_fix_obj)
-    if datetime.datetime.now() < date_fix_obj + datetime.timedelta(minutes=1):
-        print("время")
-        pass
+    while datetime.datetime.now() < date_fix_obj + datetime.timedelta(seconds=5):
+        print("Вы заблокированы! Следующая попытка через 5 секунд. А именно", date_fix_obj +
+            datetime.timedelta(seconds=5))
 
 def main():
     i = 3
@@ -69,12 +71,12 @@ def main():
         password = args.password
         if username is not None:
             print(username)  # напечатать то, что из командной строки
-        username = username or input("Введите Ваш логин:")
-        password = password or input("Введите Ваш пароль:")
+        else:
+            username = username or input("Введите Ваш логин:")
+            password = password or input("Введите Ваш пароль:")
         if login(username, password):
             break
         print("Неправильное имя или пароль")
-        print("Вы заблокированы! Следующая попытка через 1 мин.")
         func_time()
         i -= 1
         print("У Вас осталось", i, "попыток")
